@@ -1,6 +1,5 @@
 import time
 import requests
-import sys
 from valiant_predict_movement import predict_enemy_movement, tranform_indexes_to_coordinates
 
 
@@ -10,6 +9,16 @@ ACTION_READ_RADAR = "leer"
 ACTION_ATTACK = "atacar"
 TURN = 1
 
+def get_lecture_response(lecture_response):
+    """get_lecture_response"""
+    print("🤖 lecture response: ", lecture_response.text)
+    return lecture_response.text
+
+
+def get_start_response(response):
+    """get_start_response"""
+    print("🤖 start response: ", response.text)
+    return response.text
 
 def start_battle():
     """start"""
@@ -73,33 +82,40 @@ def parse_radar_data(radar_string):
     return grid, enemy_position, valiant_position
 
 
-def lecture():
+def process_lecture(lecture_string):
+    """process_lecture"""
     global TURN
-    lecture_response = perform_turn_lecture()
-    lecture_string = lecture_response.text
     grid, enemy_pos, valiant_position = parse_radar_data(lecture_string)
     predicted_next_position = predict_enemy_movement(grid, enemy_pos)
     print_board(grid)
-    print("Lecture response: ", lecture_string)
     print(f"👾 Nave enemiga detectada en: {tranform_indexes_to_coordinates(enemy_pos[0], enemy_pos[1])}")
     print(f"🔥 {TURN} Coordenadas de ataque ", tranform_indexes_to_coordinates(predicted_next_position[0], predicted_next_position[1]))
     TURN += 1
     return predicted_next_position
 
 
+def lecture():
+    """lecture"""
+    lecture_response = perform_turn_lecture()
+    lecture_string = get_lecture_response(lecture_response)
+    return process_lecture(lecture_string)
+
+
 def attack(predicted_next_position):
+    """attack"""
     i, j = predicted_next_position
     attack_x, attack_y = tranform_indexes_to_coordinates(i, j)
     print(f"🔥 Coordenadas ({attack_x}, {attack_y}); Indices: ({i}, {j})")
     attack_response = perform_turn_attack(attack_x, attack_y)
 
     if attack_response.status_code == 200:
-        print("¡Ataque exitoso! La nave enemiga ha sido destruida. ", attack_response.text)
+        print("🤖 ¡Ataque exitoso! La nave enemiga ha sido destruida. ", attack_response.text)
     else:
-        print("El ataque falló. ¡La Hope está en peligro! ", attack_response.text)
+        print("🤖 El ataque falló. ¡La Hope está en peligro! ", attack_response.text)
 
 
 def execute_command(predicted_next_position):
+    """execute_command"""
     while True:
         comando = input("🔧 Ingresa un comando (leer, atacar, end): ").strip().lower()
 
@@ -118,16 +134,37 @@ def execute_command(predicted_next_position):
         print("")
 
 
+def start_mode():
+    """start_mode"""
+    global TURN
+    command = input("🔧 Indicar modo de inicio (new, continue):  ").strip().lower()
+
+    if command == "new":
+        main()
+    elif command == "continue":
+        continue_turn = None
+        while continue_turn is None or int(continue_turn) > 4:
+            continue_turn = input("🔧 ultimo turno: ").strip()
+            if int(continue_turn) <= 4:
+                TURN = int(continue_turn)
+        state = input("🔧 lectura ultimo estado: ").strip()
+        predicted_next_position = process_lecture(state)
+        execute_command(predicted_next_position)
+    elif command == "end":
+        print("👋 Finalizando el programa...")
+    else:
+        print(f"❌ Comando no reconocido: '{command}'")
+
+
 def main():
     """Controla la lógica del juego."""
     start_time = time.time()
 
     # 1. Leer radar
     response = start_battle()
-    radar_string = response.text
+    radar_string = get_start_response(response)
     grid, enemy_pos, valiant_position = parse_radar_data(radar_string)
 
-    print("radar: ", radar_string)
     print_board(grid)
 
     if enemy_pos is None:
@@ -151,6 +188,7 @@ def main():
 
 
 def print_board(matriz):
+    """print_board"""
     for i, fila in enumerate(matriz):
         linea = ""
         for celda in fila:
@@ -166,4 +204,4 @@ def print_board(matriz):
 
 
 if __name__ == "__main__":
-    main()
+    start_mode()
