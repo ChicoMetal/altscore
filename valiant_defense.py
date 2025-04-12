@@ -5,6 +5,11 @@ from valiant_predict_movement import predict_enemy_movement, tranform_indexes_to
 
 BASE_URL = "http://localhost:8000"
 
+HEADERS = {
+    # "API-KEY": "12f1eb55057742b080debc75751e8a47",  # 🔹 Reemplaza con tu API Key real
+    "Content-Type": "application/json"
+}
+
 ACTION_READ_RADAR = "leer"
 ACTION_ATTACK = "atacar"
 TURN = 1
@@ -12,7 +17,8 @@ TURN = 1
 def get_lecture_response(lecture_response):
     """get_lecture_response"""
     print("🤖 lecture response: ", lecture_response.text)
-    return lecture_response.text
+    lecture = lecture_response.json()
+    return lecture["action_result"]
 
 
 def get_start_response(response):
@@ -22,12 +28,12 @@ def get_start_response(response):
 
 def start_battle():
     """start"""
-    return requests.post(f"{BASE_URL}/v1/s1/e5/actions/start")
+    return requests.post(f"{BASE_URL}/v1/s1/e5/actions/start", json=None, headers=HEADERS)
 
 
 def perform_turn(json):
     """perform_turn"""
-    return requests.post(f"{BASE_URL}/v1/s1/e5/actions/perform-turn", json=json)
+    return requests.post(f"{BASE_URL}/v1/s1/e5/actions/perform-turn", json=json, headers=HEADERS)
 
 
 def perform_turn_lecture():
@@ -68,6 +74,7 @@ def parse_radar_data(radar_string):
     radar_string = format_response_string(radar_string)
 
     rows = radar_string.split("|")[::-1]
+    rows = [row for row in rows if row.strip() != '']
 
     for i, row in enumerate(rows):
         grid.append([])
@@ -137,7 +144,7 @@ def execute_command(predicted_next_position):
 def start_mode():
     """start_mode"""
     global TURN
-    command = input("🔧 Indicar modo de inicio (new, continue):  ").strip().lower()
+    command = input("🔧 Indicar modo de inicio (new, continue, lecture):  ").strip().lower()
 
     if command == "new":
         main()
@@ -148,8 +155,10 @@ def start_mode():
             if int(continue_turn) <= 4:
                 TURN = int(continue_turn)
         state = input("🔧 lectura ultimo estado: ").strip()
-        predicted_next_position = process_lecture(state)
+        predicted_next_position = process_lecture(str(state))
         execute_command(predicted_next_position)
+    elif command == "lecture":
+        execute_command("")
     elif command == "end":
         print("👋 Finalizando el programa...")
     else:
@@ -163,26 +172,32 @@ def main():
     # 1. Leer radar
     response = start_battle()
     radar_string = get_start_response(response)
-    grid, enemy_pos, valiant_position = parse_radar_data(radar_string)
 
-    print_board(grid)
+    # Preguntar si continuar con lectura de datos o pasar a ejecutar los turnos
+    start_confirmation = input("🔧 Continuar con start esperado? (S, N):  ").strip().lower()
+    if start_confirmation == "n":
+        execute_command("")
+    else:
+        grid, enemy_pos, valiant_position = parse_radar_data(radar_string)
 
-    if enemy_pos is None:
-        print("No se encontró la nave enemiga.", radar_string)
-        return
+        print_board(grid)
 
-    print(f"🚀 Posicion de Valiant: {tranform_indexes_to_coordinates(valiant_position[0], valiant_position[1])}")
-    print(f"👾 Nave enemiga detectada en: {tranform_indexes_to_coordinates(enemy_pos[0], enemy_pos[1])}")
+        if enemy_pos is None:
+            print("No se encontró la nave enemiga.", radar_string)
+            return
 
-    # Predecir movimiento
-    predicted_next_position = predict_enemy_movement(grid, enemy_pos)
-    print("🔥 Coordenadas de ataque ", tranform_indexes_to_coordinates(predicted_next_position[0], predicted_next_position[1]))
+        print(f"🚀 Posicion de Valiant: {tranform_indexes_to_coordinates(valiant_position[0], valiant_position[1])}")
+        print(f"👾 Nave enemiga detectada en: {tranform_indexes_to_coordinates(enemy_pos[0], enemy_pos[1])}")
 
-    print("🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩")
-    print("")
-    print("")
+        # Predecir movimiento
+        predicted_next_position = predict_enemy_movement(grid, enemy_pos)
+        print("🔥 Coordenadas de ataque ", tranform_indexes_to_coordinates(predicted_next_position[0], predicted_next_position[1]))
 
-    execute_command(predicted_next_position)
+        print("🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩")
+        print("")
+        print("")
+
+        execute_command(predicted_next_position)
 
     print("Tiempo total transcurrido:", time.time() - start_time, "segundos")
 
