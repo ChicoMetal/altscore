@@ -44,15 +44,31 @@ def format_grid(grid):
         radar_report.append(formatted_row)
     return "|".join(radar_report) + "|"
 
-@app.post("/v1/s1/e5/actions/start1")
+class AttackPosition(BaseModel):
+    x: str
+    y: int
+
+class AttackCommand(BaseModel):
+    action: str
+    attack_position: Optional[AttackPosition] = None
+
+@app.post("/v1/s1/e5/actions/start")
 def start1():
     global grid, enemy_pos
     grid, enemy_pos = generate_grid()
-    return {"radar": format_grid(grid)}
+    return format_grid(grid)
 
-@app.post("/v1/s1/e5/actions/perform-turn1")
-def perform_turn1():
-    global grid, enemy_pos
+@app.post("/v1/s1/e5/actions/perform-turn")
+def perform_turn1(command: AttackCommand):
+    global grid, enemy_pos, current_movement
+
+    response_body = {
+        "performed_action": command.action,
+        "turns_remaining": current_movement,
+        "time_remaining": 8,
+        "action_result": None,
+        "message": None
+    }
 
     # Basic move logic: move enemy towards Hope avoiding obstacles
     def move_enemy(enemy_pos):
@@ -73,30 +89,55 @@ def perform_turn1():
                     best_distance = new_distance
         return best_move
 
-    new_enemy_pos = move_enemy(enemy_pos)
-    grid[enemy_pos[0]][enemy_pos[1]] = "0"
-    grid[new_enemy_pos[0]][new_enemy_pos[1]] = "^"
-    enemy_pos = new_enemy_pos
+    if command.action == ACTION_READ_RADAR:
+        new_enemy_pos = move_enemy(enemy_pos)
+        grid[enemy_pos[0]][enemy_pos[1]] = "0"
+        grid[new_enemy_pos[0]][new_enemy_pos[1]] = "^"
+        enemy_pos = new_enemy_pos
+        # return {"radar": format_grid(grid)}
 
-    return {"radar": format_grid(grid)}
+        response_body["action_result"] = format_grid(grid)
+        response_body["message"] = "Continue"
+        return response_body
+    elif command.action == ACTION_ATTACK:
+
+        print("Grid", grid)
+        print("Posicion nave enemiga", enemy_pos)
+        new_enemy_pos = move_enemy(enemy_pos)
+        grid[enemy_pos[0]][enemy_pos[1]] = "0"
+        grid[new_enemy_pos[0]][new_enemy_pos[1]] = "^"
+        enemy_pos = new_enemy_pos
+        response_body["action_result"] = format_grid(grid)
+
+        if int(command.attack_position.x) == enemy_pos[0] and command.attack_position.y == enemy_pos[1]:
+            response_body["message"] = "Correcto"
+            return response_body
+        else:
+            response_body["message"] = "incorrecto"
+            return response_body
+
+    response_body["action_result"] = ""
+    response_body["message"] = "error"
+    return response_body
 
 
 
-@app.post("/v1/s1/e5/actions/start")
+@app.post("/v1/s1/e5/actions/start1")
 def start():
-    return 'a01b01c01d01e01f01g01h01|a02b02c02d02e$2f02g02h02|a03b03c03d03e03f03g03h$3|a04b04c04d04e04f04g04h04|a05b05c05d05e$5f05g^5h05|a06b06c06d06e$6f06g06h06|a07b07c07d07e07f07g07h07|a08b08c08d08e08f#8g08h08|'
+    # return 'a01b01c01d01e01f01g01h01|a02b02c02d02e$2f02g02h02|a03b03c03d03e03f03g03h$3|a04b04c04d04e04f04g04h04|a05b05c05d05e$5f05g^5h05|a06b06c06d06e$6f06g06h06|a07b07c07d07e07f07g07h07|a08b08c08d08e08f#8g08h08|'
+    return "start"
 
-class AttackPosition(BaseModel):
-    x: str
-    y: int
-
-class AttackCommand(BaseModel):
-    action: str
-    attack_position: Optional[AttackPosition] = None
-
-@app.post("/v1/s1/e5/actions/perform-turn")
+@app.post("/v1/s1/e5/actions/perform-turn1")
 def perform_turn(command: AttackCommand):
     global current_movement
+
+    response_body = {
+        "performed_action": command.action,
+        "turns_remaining": current_movement,
+        "time_remaining": 8,
+        "action_result": None,
+        "message": None
+    }
 
     movements = [
         "a01b01c01d01e01f01g01h01|a02b02c02d02e$2f02g02h02|a03b03c03d03e03f03g03h$3|a04b04c04d04e04f04g04h04|a05b05c05d05e$5f05g05h05|a06b06c06d06e$6f06g^6h06|a07b07c07d07e07f07g07h07|a08b08c08d08e08f#8g08h08|",
@@ -105,16 +146,24 @@ def perform_turn(command: AttackCommand):
     if command.action == ACTION_READ_RADAR:
         new_state = movements[current_movement]
         current_movement += 1
-        return new_state
+        response_body["action_result"] = new_state
+        response_body["message"] = "Continue"
+        return response_body
     elif command.action == ACTION_ATTACK:
         current_movement = 0
         if int(command.attack_position.x) == 5 and command.attack_position.y == 6:
-            return "correcto"
+            response_body["action_result"] = ""
+            response_body["message"] = "Correcto"
+            return response_body
         else:
-            return "incorrecto"
+            response_body["action_result"] = ""
+            response_body["message"] = "incorrecto"
+            return response_body
 
     current_movement = 0
-    return "error"
+    response_body["action_result"] = ""
+    response_body["message"] = "error"
+    return response_body
 
 
 

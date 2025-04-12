@@ -3,15 +3,15 @@ import requests
 from valiant_predict_movement import predict_enemy_movement, tranform_indexes_to_coordinates
 
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "https://makers-challenge.altscore.ai"
 
 HEADERS = {
-    # "API-KEY": "12f1eb55057742b080debc75751e8a47",  # 🔹 Reemplaza con tu API Key real
+    "API-KEY": "12f1eb55057742b080debc75751e8a47",  # 🔹 Reemplaza con tu API Key real
     "Content-Type": "application/json"
 }
 
-ACTION_READ_RADAR = "leer"
-ACTION_ATTACK = "atacar"
+ACTION_READ_RADAR = "radar"
+ACTION_ATTACK = "attack"
 TURN = 1
 
 def get_lecture_response(lecture_response):
@@ -126,9 +126,9 @@ def execute_command(predicted_next_position):
     while True:
         comando = input("🔧 Ingresa un comando (leer, atacar, end): ").strip().lower()
 
-        if comando == ACTION_READ_RADAR:
+        if comando == "leer":
             predicted_next_position = lecture()
-        elif comando == ACTION_ATTACK:
+        elif comando == "atacar":
             attack(predicted_next_position)
         elif comando == "end":
             print("👋 Finalizando el programa...")
