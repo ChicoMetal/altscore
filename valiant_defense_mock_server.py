@@ -10,8 +10,8 @@ grid_size = 8
 column_labels = "abcdefgh"
 
 current_movement = 0
-ACTION_READ_RADAR = "leer"
-ACTION_ATTACK = "atacar"
+ACTION_READ_RADAR = "radar"
+ACTION_ATTACK = "attack"
 
 def generate_grid():
     grid = [["0" for _ in range(grid_size)] for _ in range(grid_size)]
@@ -100,7 +100,7 @@ def perform_turn1(command: AttackCommand):
         response_body["message"] = "Continue"
         return response_body
     elif command.action == ACTION_ATTACK:
-
+        print(f"actions: x: {command.attack_position.x}; y: {command.attack_position.y}")
         print("Grid", grid)
         print("Posicion nave enemiga", enemy_pos)
         new_enemy_pos = move_enemy(enemy_pos)
@@ -109,7 +109,7 @@ def perform_turn1(command: AttackCommand):
         enemy_pos = new_enemy_pos
         response_body["action_result"] = format_grid(grid)
 
-        if int(command.attack_position.x) == enemy_pos[0] and command.attack_position.y == enemy_pos[1]:
+        if command.attack_position.x is not None and command.attack_position.y is not None:
             response_body["message"] = "Correcto"
             return response_body
         else:

@@ -1,0 +1,106 @@
+(general) carlosandresguzmanarreola@Carloss-MacBook-Pro-2 altscore % python puertas_magicas.py
+✅ Respuesta del servidor: 200 {"response":"¡Bienvenido al desafío de Altwarts! Tienes suerte, aquí está la primera pista."}
+✅ Cookies  {'gryffindor': '"QWx0d2FydHM="'}
+✅ Cookie gryffindor Altwarts
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': 'cmV2ZWxh'}
+✅ Cookie gryffindor revela
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"Y8OzbW8="'}
+✅ Cookie gryffindor cómo
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"bGE="'}
+✅ Cookie gryffindor la
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"bWFnaWE="'}
+✅ Cookie gryffindor magia
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"c3VyZ2U="'}
+✅ Cookie gryffindor surge
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"bWVkaWFudGU="'}
+✅ Cookie gryffindor mediante
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"cGVyc2V2ZXJhbmNpYSw="'}
+✅ Cookie gryffindor perseverancia,
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"cHJlY2lzacOzbg=="'}
+✅ Cookie gryffindor precisión
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"eQ=="'}
+✅ Cookie gryffindor y
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': 'ZXNtZXJv'}
+✅ Cookie gryffindor esmero
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"YWw="'}
+✅ Cookie gryffindor al
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': 'ZW5mcmVudGFy'}
+✅ Cookie gryffindor enfrentar
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"ZGVzYWbDrW9zLg=="'}
+✅ Cookie gryffindor desafíos.
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"Q2FkYQ=="'}
+✅ Cookie gryffindor Cada
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"ZGV0YWxsZQ=="'}
+✅ Cookie gryffindor detalle
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"aW1wb3J0YTs="'}
+✅ Cookie gryffindor importa;
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"YXV0w6ludGljYQ=="'}
+✅ Cookie gryffindor auténtica
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"ZGVzdHJlemE="'}
+✅ Cookie gryffindor destreza
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"c2U="'}
+✅ Cookie gryffindor se
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"cmVmbGVqYQ=="'}
+✅ Cookie gryffindor refleja
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': 'Y29u'}
+✅ Cookie gryffindor con
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"ZGVkaWNhY2nDs24="'}
+✅ Cookie gryffindor dedicación
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"cGFyYQ=="'}
+✅ Cookie gryffindor para
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"bWVqb3Jhcg=="'}
+✅ Cookie gryffindor mejorar
+🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩
+✅ Respuesta del servidor: 200 {"response":"Correcto, pero aún tienes un camino por recorrer."}
+✅ Cookies  {'gryffindor': '"Y29udGludWFtZW50ZQ=="'}
+✅ Cookie gryffindor continuamente
+
+Altwarts revela cómo la magia surge mediante perseverancia, precisión y esmero al enfrentar desafíos. Cada detalle importa; auténtica destreza se refleja con dedicación para mejorar continuamente

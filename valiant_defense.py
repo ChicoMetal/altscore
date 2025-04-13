@@ -4,6 +4,7 @@ from valiant_predict_movement import predict_enemy_movement, tranform_indexes_to
 
 
 BASE_URL = "https://makers-challenge.altscore.ai"
+# BASE_URL = "http://localhost:8000"
 
 HEADERS = {
     "API-KEY": "12f1eb55057742b080debc75751e8a47",  # 🔹 Reemplaza con tu API Key real
@@ -44,14 +45,20 @@ def perform_turn_lecture():
     }
     return perform_turn(json)
 
+def tranform_x(x):
+    equivalent_x = {0:'a', 1:'b', 2:'c', 3:'d', 4:'e', 5:'f', 6:'g', 7:'h'}
+    return equivalent_x[x]
+
+def tranform_y(y):
+    return y + 1
 
 def perform_turn_attack(x, y):
     """perform_turn_attack"""
     json={
         "action": ACTION_ATTACK,
         "attack_position": {
-            "x": str(x),
-            "y": int(y)
+            "x": tranform_x(x),
+            "y": tranform_y(y)
         }
     }
     return perform_turn(json)
@@ -209,11 +216,12 @@ def print_board(matriz):
         for celda in fila:
             contenido = celda[1]
             linea += contenido + " "
-        print(linea.strip() + f"    {7 - i}")
+        print(linea.strip() + f"    {7 - i} |{8 - i}")
 
     print("")
     print("")
     print("0 1 2 3 4 5 6 7")
+    print("a b c d e f g h")
     print("")
     print("")
 

@@ -3,9 +3,9 @@ import requests
 def fetch_service_data():
     # URLs of the services
     urls = [
-        ("GET", "https://0226-186-146-92-172.ngrok-free.app/status"),
-        ("GET", "https://0226-186-146-92-172.ngrok-free.app/repair-bay"),
-        ("POST", "https://0226-186-146-92-172.ngrok-free.app/teapot")
+        ("GET", "https://nave-a-deriva.onrender.com/status"),
+        ("GET", "https://nave-a-deriva.onrender.com/repair-bay"),
+        ("POST", "https://nave-a-deriva.onrender.com/teapot")
     ]
 
     for method, url in urls:
